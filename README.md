@@ -2,7 +2,7 @@
 
 [![Get the plugin](https://img.shields.io/badge/Get_the-companion_plugin-9fd3ff)](https://github.com/abdullahhasan42/hollow-knight-and-silksong-plugin)
 ![Version](https://img.shields.io/badge/version-1.0.0-d8b25a)
-![Obsidian](https://img.shields.io/badge/Obsidian-1.5%2B-7c3aed)
+![Obsidian](https://img.shields.io/badge/Obsidian-1.5.8%2B-7c3aed)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 A dark, ornate Obsidian theme inspired by the two kingdoms of Hollow Knight and Silksong. **Hallownest** is void black, pale bone and blue soul light. **Pharloom** is dark lacquer, crimson silk and bell gold. Switch between them in one click.
@@ -198,7 +198,7 @@ The theme makes no network requests. Every font, icon and ornament is embedded i
 
 ## Fonts and license
 
-If Trajan Pro or Perpetua is installed on your computer, the theme uses it first. Otherwise it uses the embedded fonts: Cinzel and Cinzel Decorative for titles, Cormorant Garamond for note text. All three are under the SIL Open Font License; the texts are in `fonts/`.
+If Trajan Pro or Perpetua is installed on your computer, the theme uses it first. Otherwise it uses the embedded fonts: Cinzel and Cinzel Decorative for titles, Cormorant Garamond for note text. All three are under the SIL Open Font License; the texts are in `fonts/`. The embedded fonts are Latin subsets to keep theme.css small; text in other scripts, such as Cyrillic or Greek, uses your system serif font.
 
 The code, ornaments and icons are MIT licensed, see [LICENSE](LICENSE). The ornaments and icons are original drawings. No game art, logos or fonts from the games are included.
 
