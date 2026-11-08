@@ -1,0 +1,95 @@
+/* Hollow Knight and Silksong: Silkstorm
+   Crimson silk threads stretch across the tab bar, headings, and dividers, and sway.
+   Works best with the Pharloom kingdom. Turn it off in Appearance > CSS snippets. */
+
+body {
+	--hk-silk: 200, 40, 58;
+	--hk-silk-bg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 16' preserveAspectRatio='none'><g fill='none' stroke='%23c8283a' stroke-linecap='round' opacity='0.8'><path stroke-width='1.4' d='M0 8 C 60 2, 120 14, 180 8 S 300 2, 360 8 S 480 14, 600 7'/><path stroke-width='0.7' d='M0 10 C 70 14, 140 4, 210 9 S 330 14, 400 9 S 520 4, 600 10'/></g></svg>");
+	--hk-silk-thread: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 16' preserveAspectRatio='none'><g fill='none' stroke='black' stroke-linecap='round'><path stroke-width='1.4' d='M0 8 C 60 2, 120 14, 180 8 S 300 2, 360 8 S 480 14, 600 7'/><path stroke-width='0.7' d='M0 10 C 70 14, 140 4, 210 9 S 330 14, 400 9 S 520 4, 600 10'/></g></svg>");
+}
+
+/* Thread along the bottom of every tab bar, drawn as a background so it never covers a tab. */
+.workspace-tab-header-container {
+	background-image: var(--hk-silk-bg);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-size: 100% 10px;
+}
+
+/* Threads under live preview headings. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2,
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
+	padding-bottom: 10px;
+	background-image: var(--hk-silk-bg);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-size: 80% 9px;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
+	background-size: 50% 9px;
+}
+
+/* Threads under H2 and H3. */
+.markdown-rendered h2,
+.markdown-rendered h3 {
+	position: relative;
+	border-bottom: none;
+	padding-bottom: 10px;
+}
+
+.markdown-rendered h2::after,
+.markdown-rendered h3::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 20%;
+	bottom: 0;
+	height: 9px;
+	background-color: rgba(var(--hk-silk), 0.7);
+	-webkit-mask: var(--hk-silk-thread) center / 100% 100% no-repeat;
+	mask: var(--hk-silk-thread) center / 100% 100% no-repeat;
+	animation: hk-snip-silk-sway 6s ease-in-out infinite alternate;
+}
+
+.markdown-rendered h3::after {
+	right: 50%;
+	opacity: 0.6;
+}
+
+/* Hanging threads on menus and dialogs. */
+.menu,
+.prompt,
+.modal {
+	border-top: 2px solid rgba(var(--hk-silk), 0.65);
+}
+
+.markdown-rendered blockquote {
+	border-left-color: rgb(var(--hk-silk));
+}
+
+.markdown-source-view.mod-cm6 .cm-cursor {
+	border-left-color: rgb(var(--hk-silk));
+	box-shadow: 0 0 6px rgba(var(--hk-silk), 0.8);
+}
+
+@keyframes hk-snip-silk-sway {
+	from {
+		transform: translateY(-1px) scaleY(0.85);
+	}
+	to {
+		transform: translateY(1px) scaleY(1.15);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.markdown-rendered h2::after,
+	.markdown-rendered h3::after {
+		animation: none;
+	}
+}
+
+body.hk-still .markdown-rendered h2::after,
+body.hk-still .markdown-rendered h3::after {
+	animation: none;
+}

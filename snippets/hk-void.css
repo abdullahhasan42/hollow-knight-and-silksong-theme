@@ -1,0 +1,73 @@
+/* Hollow Knight and Silksong: Void
+   Pure black panels, sharper contrast, and dark void wisps curling in from the edges.
+   Dark mode only. Turn it off in Appearance > CSS snippets. */
+
+body.theme-dark {
+	--hk-void: #000000;
+	--hk-abyss: #030405;
+	--hk-deep: #07090c;
+	--hk-stone: #101318;
+	--hk-pale: #f4f7fb;
+	--hk-pale-2: #c8d0da;
+}
+
+body.theme-dark .workspace-split.mod-root .workspace-leaf-content {
+	position: relative;
+}
+
+body.theme-dark .workspace-split.mod-root .workspace-leaf-content::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
+	background:
+		radial-gradient(ellipse 18% 30% at 0% 20%, rgba(0, 0, 0, 0.9), transparent 70%),
+		radial-gradient(ellipse 14% 26% at 100% 65%, rgba(0, 0, 0, 0.9), transparent 70%),
+		radial-gradient(ellipse 22% 14% at 40% 100%, rgba(0, 0, 0, 0.85), transparent 70%);
+	animation: hk-snip-void-breathe 9s ease-in-out infinite alternate;
+}
+
+body.theme-dark .workspace-split.mod-root .workspace-leaf-content > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* Wisps: thin dark tendrils along the left and right edges of the editor. */
+body.theme-dark .workspace-split.mod-root .workspace-leaf-content::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 40px;
+	pointer-events: none;
+	z-index: 2;
+	background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 400' preserveAspectRatio='none'><g fill='none' stroke='black' stroke-linecap='round'><path stroke-width='5' d='M0 40 C 22 60 6 90 24 120 S 10 170 30 200'/><path stroke-width='3' d='M0 210 C 18 230 4 260 20 290 S 8 330 26 360'/><path stroke-width='2' d='M0 120 C 10 140 2 160 14 180'/></g></svg>") left top / 100% 100% no-repeat;
+	opacity: 0.85;
+	filter: blur(1.5px);
+}
+
+body.theme-dark .markdown-rendered h1,
+body.theme-dark .inline-title {
+	text-shadow: 0 0 2px #fff, 0 0 24px rgba(255, 255, 255, 0.25);
+}
+
+@keyframes hk-snip-void-breathe {
+	from {
+		opacity: 0.75;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body.theme-dark .workspace-split.mod-root .workspace-leaf-content::before {
+		animation: none;
+	}
+}
+
+body.hk-still .workspace-split.mod-root .workspace-leaf-content::before {
+	animation: none;
+}
